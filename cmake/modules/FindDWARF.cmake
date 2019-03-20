@@ -37,10 +37,8 @@ find_library(ELF_LIBRARY
 	PATHS /usr/lib /usr/local/lib /usr/lib64 /usr/local/lib64 ~/usr/local/lib ~/usr/local/lib64
 )
 
-find_library(EBL_LIBRARY
-	NAMES ebl
-	PATHS /usr/lib /usr/local/lib /usr/lib64 /usr/local/lib64 ~/usr/local/lib ~/usr/local/lib64
-)
+# Fix on Ubuntu. https://bugs.launchpad.net/ubuntu/+bug/449551
+set (EBL_LIBRARY -ldw)
 
 if (DWARF_INCLUDE_DIR AND LIBDW_INCLUDE_DIR AND DWARF_LIBRARY AND ELF_LIBRARY AND EBL_LIBRARY)
 	set(DWARF_FOUND TRUE)
